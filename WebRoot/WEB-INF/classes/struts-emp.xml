@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="hellodemo" extends="struts-default" namespace="/">
+		<interceptors>
+			<interceptor name="logger" class="intercepter.LoginIntercepter"></interceptor>
+		</interceptors>
+
+
+		<action name="emp_*" class="action.EmpAction" method="{1}">
+			<interceptor-ref name="logger"></interceptor-ref> 
+
+			<result name="list">/empList.jsp</result>
+			<result name="toAddPage">/addEmp.jsp</result>
+			<result name="add" type="redirectAction">emp_list</result>
+			<result name="del" type="redirectAction">emp_list</result>
+			<result name="update">/updateEmp.jsp</result>
+			<result name="updateEmp" type="redirectAction">emp_list</result>
+			<result name="finByName">/empListByName.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+
+
+	</package>
+</struts>
